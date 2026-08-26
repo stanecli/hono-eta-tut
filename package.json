@@ -2,8 +2,11 @@
   "name": "hone-eta-tutorial",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "pnpm build && vite preview",
+    "deploy": "pnpm build && wrangler deploy --minify",
+    "typecheck": "tsc --noEmit",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
@@ -11,7 +14,10 @@
     "hono": "^4.13.5"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.54.0",
     "@types/node": "^26.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
     "wrangler": "^4.110.0"
   }
 }

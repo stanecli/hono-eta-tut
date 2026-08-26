@@ -1,21 +1,19 @@
-```txt
-npm install
-npm run dev
+# Cloudflare Worker + Vite + Hono + Eta
+
+Eta templates are imported as modules and precompiled by the `eta-templates`
+plugin in `vite.config.ts`. This bundles the renderer into the Worker without
+requiring filesystem access or runtime code generation.
+
+```sh
+pnpm install
+pnpm dev
 ```
 
-```txt
-npm run deploy
-```
+Open <http://localhost:5173/>.
 
-[For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
-
-```txt
-npm run cf-typegen
-```
-
-Pass the `CloudflareBindings` as generics when instantiating `Hono`:
-
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
+```sh
+pnpm typecheck
+pnpm build
+pnpm preview
+pnpm deploy
 ```
